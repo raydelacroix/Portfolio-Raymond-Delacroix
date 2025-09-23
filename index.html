@@ -17,12 +17,40 @@
             min-height: 100vh;
             color: #333;
             overflow-x: hidden;
+            position: relative;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
         }
 
         .header {
@@ -39,6 +67,12 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             margin-bottom: 30px;
             border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
 
         .profile-title {
@@ -133,6 +167,13 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             border: 1px solid rgba(255,255,255,0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-category.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-category:hover {
@@ -194,7 +235,7 @@
         }
 
         .project-item:hover {
-            transform: translateX(10px);
+            transform: translateX(10px) scale(1.02);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
 
@@ -220,6 +261,14 @@
             margin-top: 50px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             border: 1px solid rgba(255,255,255,0.2);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .contact-section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .contact-title {
@@ -270,6 +319,7 @@
             height: 4px;
             background: rgba(255, 255, 255, 0.6);
             border-radius: 50%;
+            animation: float 5s ease-in-out infinite;
         }
 
         .scroll-indicator {
@@ -333,6 +383,10 @@
             .project-list {
                 grid-template-columns: 1fr;
             }
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
         }
     </style>
 </head>
@@ -341,6 +395,12 @@
     <div class="floating-particles"></div>
     
     <div class="container">
+        <div class="profile-header">
+            <div class="profile-image">
+                <img src="photo_profil.png" alt="Raymond Delacroix">
+            </div>
+        </div>
+
         <header class="header">
             <div class="profile-card">
                 <h1 class="profile-title">🚀 Raymond Delacroix</h1>
@@ -381,19 +441,11 @@
                 <div class="project-list">
                     <div class="project-item" data-repo="Ai-agent-voice">
                         <div class="project-name">🎤 Agent Vocal Intelligent</div>
-                        <div class="project-desc">Développement d'un agent vocal intelligent capable de gérer des appels et d'interagir naturellement avec les utilisateurs.</div>
-                    </div>
-                    <div class="project-item" data-repo="Project-voice-ai-agent">
-                        <div class="project-name">🗣️ IA Vocal Avancée</div>
-                        <div class="project-desc">Version avancée de l'agent vocal IA, intégrant reconnaissance vocale et génération de réponse.</div>
+                        <div class="project-desc">Développement d'un agent vocal intelligent capable de gérer des appels et d'interagir naturellement.</div>
                     </div>
                     <div class="project-item" data-repo="agent-first-part">
                         <div class="project-name">💬 Agent Conversationnel</div>
                         <div class="project-desc">Premier prototype d'un agent intelligent pour la gestion des conversations.</div>
-                    </div>
-                    <div class="project-item" data-repo="AI-AGENT_1">
-                        <div class="project-name">🤖 Agent Autonome</div>
-                        <div class="project-desc">Expérimentation autour d'un agent autonome appliqué à la relation client.</div>
                     </div>
                 </div>
             </div>
@@ -463,10 +515,6 @@
                         <div class="project-name">🔬 Détection de Tumeurs ViT</div>
                         <div class="project-desc">Détection de tumeurs grâce au fine-tuning de Vision Transformers.</div>
                     </div>
-                    <div class="project-item" data-repo="Projet_Analyse_m-dicale_pour_detection_maladie_sur_base_Image_medicale">
-                        <div class="project-name">🏥 Diagnostic Médical IA</div>
-                        <div class="project-desc">Analyse d'images médicales pour la détection automatique de maladies.</div>
-                    </div>
                 </div>
             </div>
 
@@ -479,10 +527,6 @@
                     <div class="project-item" data-repo="IOT_Project">
                         <div class="project-name">📡 Projet IoT</div>
                         <div class="project-desc">Développement IoT appliqué à la collecte et au traitement des données.</div>
-                    </div>
-                    <div class="project-item" data-repo="githubtutorial">
-                        <div class="project-name">📚 Tutoriel GitHub</div>
-                        <div class="project-desc">Tutoriel pratique sur GitHub et gestion de versions.</div>
                     </div>
                 </div>
             </div>
@@ -503,6 +547,9 @@
                 </a>
                 <a href="https://github.com/raydelacroix" class="contact-link" target="_blank">
                     🐙 GitHub
+                </a>
+                <a href="cv-raymond-delacroix.pdf" class="contact-link" download>
+                    📄 Télécharger mon CV
                 </a>
             </div>
             <p style="margin-top: 30px; font-style: italic; color: #888;">
@@ -550,11 +597,8 @@
             
             setTimeout(typeWriter, speed);
         }
-        
-        // Démarrer l'animation
-        typeWriter();
-        
-        // Animation des statistiques
+
+        // Animation des compteurs de stats
         function animateCounters() {
             const counters = document.querySelectorAll('.stat-number');
             counters.forEach(counter => {
@@ -575,7 +619,7 @@
                 updateCounter();
             });
         }
-        
+
         // Observer pour animations au scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -586,36 +630,34 @@
                     }
                 }
             });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-card, .project-category, .contact-section').forEach(element => {
+            observer.observe(element);
         });
-        
-        // Observer les cartes de stats
-        document.querySelectorAll('.stat-card').forEach(card => {
-            observer.observe(card);
-        });
-        
+
         // Particules flottantes
         function createParticles() {
             const particlesContainer = document.querySelector('.floating-particles');
-            const particleCount = 50;
+            const particleCount = 100;
             
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                particle.style.animation = `float ${Math.random() * 6 + 4}s ease-in-out infinite`;
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 15 + 5) + 's';
                 particlesContainer.appendChild(particle);
             }
         }
-        
+
         // Indicateur de scroll
         function updateScrollIndicator() {
             const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
             document.querySelector('.scroll-indicator').style.width = scrolled + '%';
         }
-        
+
         // Click sur les projets pour ouvrir GitHub
         document.querySelectorAll('.project-item').forEach(item => {
             item.addEventListener('click', () => {
@@ -625,7 +667,7 @@
                 }
             });
         });
-        
+
         // Effet parallax léger
         window.addEventListener('scroll', () => {
             updateScrollIndicator();
@@ -638,7 +680,7 @@
                 el.style.transform = `translateY(${yPos}px)`;
             });
         });
-        
+
         // Smooth scroll pour les ancres
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -652,34 +694,16 @@
                 }
             });
         });
-        
-        // Animation d'entrée pour les éléments
-        function animateOnScroll() {
-            const elements = document.querySelectorAll('.project-category');
-            elements.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    el.style.animation = 'fadeInDown 0.8s ease forwards';
-                    el.style.animationDelay = Math.random() * 0.3 + 's';
-                }
-            });
-        }
-        
+
         // Initialisation
         document.addEventListener('DOMContentLoaded', () => {
+            typeWriter();
             createParticles();
-            animateOnScroll();
-            
-            // Messages d'encouragement dans la console
             console.log('🚀 Bienvenue sur le portfolio de Raymond Delacroix !');
             console.log('💼 Prêt à collaborer ? Contactez-moi : raymond.ybo@gmail.com');
             console.log('🔗 LinkedIn: https://www.linkedin.com/in/yboraymonddelacroix');
         });
-        
-        window.addEventListener('scroll', animateOnScroll);
-        
+
         // Easter egg : Konami code
         let konamiCode = [];
         const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
@@ -691,10 +715,18 @@
             }
             
             if (konamiCode.join(',') === konamiSequence.join(',')) {
-                alert('🎉 Bravo ! Vous avez trouvé l\'easter egg ! Raymond est définitivement le candidat qu\'il vous faut ! 🚀');
+                alert('🎉 Bravo ! Vous avez trouvé l\'easter egg ! Raymond est votre expert IA idéal ! 🚀');
                 konamiCode = [];
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
             }
         });
+
+        // Ajout de confetti (via CDN)
+        const script = document.createElement('script');
+        script.src = 'https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js';
+        document.body.appendChild(script);
     </script>
-</body>
-</html>
