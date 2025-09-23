@@ -52,8 +52,8 @@ Ce dépôt présente l’ensemble des projets que j’ai réalisés, allant de l
 ---
 
 ## 📫 Me contacter
-- 💼 [LinkedIn](https://www.linkedin.com) *(à remplacer par ton lien)*  
-- 📧 Email : *(à mettre ici)*  
+- 💼 [LinkedIn](www.linkedin.com/in/yboraymonddelacroix) *(à remplacer par ton lien)*  
+- 📧 Email : *raymond.ybo@gmail.com*  
 
 ---
 
